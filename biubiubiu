@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Nov 28 15:02:13 2020
+
+@author: kyle
+"""
+
+import pygame
+
+white=(255,255,255)
+black=(0,0,0)
+
+pygame.init()
+screen=pygame.display.set_mode([800,600])
+pygame.display.set_caption('biubiubiu')
+clock=pygame.time.Clock
+click_sound=pygame.mixer.Sound('laser5.ogg')
+background_position=[0,0]
+background_image=pygame.image.load('saturn_family1.jpg').convert()
+player_image=pygame.image.load('playerShip1_orange.png').convert()
+
+done=False
+
+while not done:
+    for event in pygame.event.get():
+        if event==pygame.QUIT:
+            done=True
+        elif event.type==pygame.MOUSEBUTTONDOWN:
+            click_sound.play()
+    screen.blit(background_image,background_position)
+    player_position=pygame.mouse.get_pos()
+    x=player_position[0]
+    y=player_position[1]
+    screen.blit(player_image,[x,y])
+    
+    pygame.display.filp
+    
+    clock.tick()
+pygame.quit    
+    
